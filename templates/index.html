@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Tâches</title>
+</head>
+<body>
+    <h1>Liste des Tâches</h1>
+    <ul>
+        {{range .}}
+        <li>
+            {{.Name}}
+            <form action="/delete" method="POST" style="display:inline;">
+                <input type="hidden" name="id" value="{{.ID}}">
+                <button type="submit">Supprimer</button>
+            </form>
+        </li>
+        {{end}}
+    </ul>
+    <h2>Ajouter une Nouvelle Tâche</h2>
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Nom de la tâche">
+        <button type="submit">Ajouter</button>
+    </form>
+</body>
+</html>
